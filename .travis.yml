@@ -14,6 +14,7 @@ before_script:
   - if [ "$CXX" = "clang++" ]; then sudo apt-get install -qq libstdc++-4.8-dev; fi
   - if [ "$CXX" = "g++" ]; then sudo apt-get install -qq g++-4.8; fi
   - if [ "$CXX" = "g++" ]; then export CXX="g++-4.8" CC="gcc-4.8"; fi
+  - cd clang
   - mkdir clang
   - mv * clang
   - git clone --depth=1 https://github.com/avr-llvm/llvm.git
@@ -23,6 +24,7 @@ before_script:
   - mv clang llvm/tools/
   - mv lld llvm/tools/
   - mv llvm/* .
+  - cd ..
 
 script:
   - mkdir build && cd build
